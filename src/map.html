@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+    </style>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+    <script>
+var map;
+function initialize() {
+  var mapOptions = {
+    zoom: 14,
+    center: new google.maps.LatLng(-5.188, -37.344),
+    mapTypeId: google.maps.MapTypeId.SATELLITE
+  };
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+}
+
+function linha() {
+	var flightPlanCoordinates = [
+    new google.maps.LatLng(-5.188, -37.344),
+    new google.maps.LatLng(-5.19, -37.30),
+    new google.maps.LatLng(-5.2, -37.31),
+    new google.maps.LatLng(-5.2, -37.32)
+  ];
+  var flightPath = new google.maps.Polyline({
+    path: flightPlanCoordinates,
+    strokeColor: '#FF0000',
+    strokeOpacity: 1.0,
+    strokeWeight: 2
+  });
+
+  flightPath.setMap(map);
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+    <div id="map-canvas"></div>
+  </body>
+</html>
