@@ -133,7 +133,7 @@ public class SampleController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         wengine = wview.getEngine();
-        wengine.load(getClass().getResource("/map.html").toExternalForm());
+        wengine.load(getClass().getResource("map.html").toExternalForm());
 
         wengine.getLoadWorker().stateProperty().addListener(new ChangeListener<Worker.State>() {
             @Override
