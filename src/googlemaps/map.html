@@ -18,7 +18,10 @@ function initialize() {
   var mapOptions = {
     zoom: 14,
     center: new google.maps.LatLng(-5.188, -37.344),
-    mapTypeId: google.maps.MapTypeId.SATELLITE
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    panControl: false,
+    streetViewControl: false,
+    zoomControl: false
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
