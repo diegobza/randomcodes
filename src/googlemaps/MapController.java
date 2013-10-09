@@ -21,12 +21,13 @@ import netscape.javascript.JSObject;
  *
  * @author diego
  */
-public class SampleController implements Initializable {
+public class MapController implements Initializable {
 
     private JSObject doc;
     private EventHandler<MapEvent> onMapLatLngChanged;
     private boolean ready = false;
     private WebEngine wengine;
+    private final int mapPanAmount = 50;
     @FXML
     private WebView wview;
 
@@ -38,7 +39,7 @@ public class SampleController implements Initializable {
                     final Worker.State newState) {
                 if (newState == Worker.State.SUCCEEDED) {
                     doc = (JSObject) wengine.executeScript("window");
-                    doc.setMember("app", SampleController.this);
+                    doc.setMember("app", MapController.this);
                 }
             }
         });
@@ -119,11 +120,31 @@ public class SampleController implements Initializable {
     public ReadOnlyDoubleProperty widthProperty() {
         return wview.widthProperty();
     }
-    
+
     @FXML
     private void mapZoomIn() {
 //        invokeJS("map.setZoom(15)");
         invokeJS("linha()");
+    }
+
+    @FXML
+    private void mapLeft() {
+        invokeJS("map.panBy(-" + mapPanAmount + ", 0)");
+    }
+
+    @FXML
+    private void mapRight() {
+        invokeJS("map.panBy(" + mapPanAmount + ", 0)");
+    }
+
+    @FXML
+    private void mapUp() {
+        invokeJS("map.panBy(0, -" + mapPanAmount + ")");
+    }
+
+    @FXML
+    private void mapDown() {
+        invokeJS("map.panBy(0, " + mapPanAmount + ")");
     }
 
     @FXML

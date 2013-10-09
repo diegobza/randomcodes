@@ -12,7 +12,7 @@ import javafx.event.Event;
  */
 public class MapEvent extends Event {
 
-    public MapEvent(SampleController map, double lat, double lng) {
+    public MapEvent(MapController map, double lat, double lng) {
         super(map, Event.NULL_SOURCE_TARGET, Event.ANY);
         this.lat = lat;
         this.lng = lng;
